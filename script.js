@@ -230,7 +230,7 @@ function exibirCardJogador() {
     
     var opcoesTexto = ''
     for (var atributo in cardJogador.atributos) {
-        opcoesTexto += "|<input id('at') type='radio'name='atributo' value='" + atributo + "'>" + atributo + " " + cardJogador.atributos[atributo] + " |"
+        opcoesTexto += "|<input id('at') type='radio'name='atributo' value='" + atributo + "'>" + atributo + "-" + cardJogador.atributos[atributo] + "|"
         
     }
         
