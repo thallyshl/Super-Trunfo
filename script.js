@@ -180,7 +180,7 @@ var card18 = {
 }
 var card19 = {
     nome: "Shanks",
-    img: 'https://static.wikia.nocookie.net/liberproeliis/images/9/9e/Ddivs7v-3d42ef3a-1f30-4962-b613-e0b894e89dfb.png/revision/latest/scale-to-width-down/310?cb=20200902152746&path-prefix=pt-br',
+    img: 'https://static.wikia.nocookie.net/onepiece/images/6/66/Shanks_Anime_Infobox.png/revision/latest?cb=20181124193224&path-prefix=pt',
     atributos: {
         ataque: 95,
         defesa: 89,
@@ -219,6 +219,7 @@ function sortearCarta() {
     cards.splice (indexCardMaquina, 1);
     exibirCardJogador();
     attPlacar();
+   // alert('Selecione um dos atributos antes de pressionar o botão jogar!')
     btnS.disabled = true;
     btnJ.disabled = false;
 }
@@ -230,7 +231,7 @@ function exibirCardJogador() {
     
     var opcoesTexto = ''
     for (var atributo in cardJogador.atributos) {
-        opcoesTexto += "|<input id('at') type='radio'name='atributo' value='" + atributo + "'>" + atributo + "-" + cardJogador.atributos[atributo] + "|"
+        opcoesTexto += "<input id('at') type='radio'name='atributo' value='" + atributo + "'>" + atributo + " - " + cardJogador.atributos[atributo] + "<br/>"
         
     }
         
@@ -256,7 +257,7 @@ function quantidadeCards() {
 }
 function exibirCardMaquina() {
     var cardM = document.getElementById('carta-maquina')
-    var moldura = '<img src="card.png"  style=" width: inherit; height: inherit; position:absolute;">'
+    var moldura = '<img src="card.png"  style=" width: inherit; height: inherit; position:absolute;" style="text-allign: center;>'
     cardM.style.backgroundImage = `url(${cardMaquina.img})`
     var nome = `<p class="carta-subtitle">${cardMaquina.nome}</p>`
     
@@ -297,9 +298,13 @@ function proximaRodada() {
     btnP.disabled = true;
     btnS.disabled = false;
     quantidadeCards()
+
     if (cards.length == 0 && pontosJogador > pontosMaquina) {
         alert('Fim de jogo! Você venceu.')
     } else if (cards.length == 0 && pontosJogador < pontosMaquina) {
         alert('Fim de jogo! Você venceu.')
+    }
+    if (cards.length !== 0) {
+        sortearCarta()
     }
 }
